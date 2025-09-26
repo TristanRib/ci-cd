@@ -38,7 +38,7 @@ unit-test:
     - if: '$CI_COMMIT_TAG == null
         && $CI_COMMIT_TITLE !~ /^chore: release/'
   script:
-    - npm test
+    - npm run test
 
 e2e-test:
   stage: test
@@ -58,7 +58,7 @@ AUTH-E2E:
     - npx serve tests/AUTH-E2E -l 3000 &
     - SERVER_PID=$!
     - sleep 5
-    - npm test:e2e
+    - npm run test:e2e
     - kill $SERVER_PID
 
 release:
