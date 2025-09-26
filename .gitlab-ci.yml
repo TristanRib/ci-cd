@@ -55,8 +55,8 @@ AUTH-E2E:
     - if: '$CI_COMMIT_TAG == null
         && $CI_COMMIT_TITLE !~ /^chore: release/'
   script:
-    - npm ci
     - npx playwright install
+    - npx playwright install-deps
     - npx serve tests/AUTH-E2E -l 3000 &
     - SERVER_PID=$!
     - sleep 5
