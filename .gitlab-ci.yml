@@ -49,6 +49,19 @@ e2e-test:
   script:
     - echo "Hello E2E !"
 
+AUTH-E2E:
+  stage: test
+  rules:
+    - if: '$CI_COMMIT_TAG == null
+        && $CI_COMMIT_TITLE !~ /^chore: release/
+        && $CI_PIPELINE_SOURCE == "merge_request_event"'
+  script:
+    - npx serve tests/AUTH-E2E -l 3000 &
+    - SERVER_PID=$!
+    - sleep 5
+    - npm run test
+    - kill $SERVER_PID
+
 release:
   stage: release
   when: manual
