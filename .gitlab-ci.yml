@@ -58,7 +58,7 @@ AUTH-E2E:
     - npx serve tests/AUTH-E2E -l 3000 &
     - SERVER_PID=$!
     - sleep 5
-    - npm run test
+    - npm test:e2e
     - kill $SERVER_PID
 
 release:
