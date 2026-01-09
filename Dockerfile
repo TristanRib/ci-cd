@@ -1,7 +1,8 @@
-FROM debian:13-slim
+FROM node:25-slim
 
-RUN apt-get update && apt-get clean
+WORKDIR /app
 
+COPY . .
 RUN npm install
 
 CMD ["npm", "run", "start"]
