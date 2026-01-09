@@ -28,6 +28,7 @@ install:
   extends: .rules
   script:
     - npm ci --cache .npm --prefer-offline
+
 lint:
   stage: validate
   extends: .rules
