@@ -15,7 +15,7 @@ stages:
   - deploy
 
 variables:
-  ENV_TARGET: "not-canary"
+  ENV_TARGET: "canary"
 
 .rules:
   rules:
