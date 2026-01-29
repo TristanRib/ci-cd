@@ -1,17 +1,23 @@
-const express = require("express");
-const swaggerJsdoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
-const { GoogleGenAI } = require("@google/genai");
+import express from "express";
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
+import {GoogleGenAI} from "@google/genai";
+import cors from "cors";
+import dotenv from "dotenv";
 
-const auth = require("./modules/authentication");
+import auth from "./modules/authentication.js";
+
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors());
+
 app.use(express.json());
 
 const ai = new GoogleGenAI({
-    apiKey: "AIzaSyDLyllsbwD5xp5EZNUAuBeGlxVGHRQIaI4"
+    apiKey: process.env.GOOGLE_API_KEY
 });
 
 /**
@@ -43,7 +49,7 @@ app.get("/", (req, res) => {
  *         description: Auth result
  */
 app.get("/auth/:secret", (req, res) => {
-    const { secret } = req.params;
+    const {secret} = req.params;
     const response = auth(secret);
 
     res.status(response.status).send(response.message);
@@ -69,10 +75,10 @@ app.get("/auth/:secret", (req, res) => {
  */
 app.post("/generate", async (req, res) => {
     try {
-        const { prompt } = req.body;
+        const {prompt} = req.body;
 
         if (!prompt) {
-            return res.status(400).json({ error: "Prompt requis" });
+            return res.status(400).json({error: "Prompt requis"});
         }
 
         const result = await ai.models.generateContent({
@@ -80,11 +86,11 @@ app.post("/generate", async (req, res) => {
             contents: prompt
         });
 
-        res.json({ response: result.text });
+        res.json({response: result.text});
     } catch (error) {
         const message =
             error instanceof Error ? error.message : "Erreur inconnue";
-        res.status(500).json({ error: message });
+        res.status(500).json({error: message});
     }
 });
 
@@ -98,7 +104,7 @@ const swaggerSpec = swaggerJsdoc({
             description: "API permettant d'interroger Gemini via Google GenAI"
         },
         servers: [
-            { url: "http://localhost:3000" }
+            {url: "http://localhost:3000"}
         ]
     },
     apis: ["./src/**/*.js"]

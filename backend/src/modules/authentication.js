@@ -24,4 +24,4 @@ function auth(secret) {
   return { status: 401, message: 'No secret provided.' };
 }
 
-module.exports = auth;
+export default auth;

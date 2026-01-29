@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Gemini Frontend</title>
+    <script type="module" src="./src/main.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2rem;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+
+        button {
+            margin-top: 1rem;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+<h1>Gemini API Demo</h1>
+<textarea id="prompt" placeholder="Écris ton prompt ici..."></textarea><br>
+<button id="sendBtn">Envoyer</button>
+<h2>Réponse :</h2>
+<pre id="result"></pre>
+</body>
+</html>
