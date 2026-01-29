@@ -20,5 +20,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
 
-      - name: Release with release-it
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx --yes release-it --ci
