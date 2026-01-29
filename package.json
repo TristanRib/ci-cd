@@ -1,7 +1,7 @@
 {
   "name": "ci-cd",
   "private": true,
-  "version": "0.0.10",
+  "version": "0.0.11",
   "type": "module",
   "scripts": {
     "start:backend": "node backend/src/index.js",
