@@ -100,6 +100,11 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
 
+      - name: Setup Git user
+        run: |
+          git config user.name $GITLAB_USER_NAME
+          git config user.email $GITLAB_USER_EMAIL
+
       - name: Release with release-it
         run: npx --yes release-it --ci
         env:
