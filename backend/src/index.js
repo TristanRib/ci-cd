@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 
 import auth from "./modules/authentication.js";
 import swaggerUi from "swagger-ui-express";
-import {swaggerSpec} from "../swagger.js";
+import {swaggerSpec} from "./swagger.js";
 
 dotenv.config();
 
