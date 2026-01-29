@@ -2,6 +2,7 @@
   "name": "ci-cd",
   "private": true,
   "version": "0.0.8",
+  "type": "module",
   "scripts": {
     "start:backend": "node backend/src/index.js",
     "start:frontend": "vite frontend",

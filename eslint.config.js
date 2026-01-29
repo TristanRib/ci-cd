@@ -1,15 +1,12 @@
-const globals = require("globals");
-const js = require("@eslint/js");
+import globals from "globals";
+import js from "@eslint/js";
 
-module.exports = [
-    {
-        ignores: ["eslint.config.js"]
-    },
+export default [
     js.configs.recommended,
     {
         files: ["backend/**/*.js"],
         languageOptions: {
-            sourceType: "commonjs",
+            sourceType: "module",
             globals: globals.node
         },
         ignores: ["**/*.test.js", "**/*.config.js"],
@@ -20,7 +17,7 @@ module.exports = [
     {
         files: ["frontend/**/*.js"],
         languageOptions: {
-            sourceType: "commonjs",
+            sourceType: "module",
             globals: globals.browser
         }
     }
