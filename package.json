@@ -23,7 +23,10 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "@google/genai": "^1.38.0",
+    "express": "^4.18.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "release-it": {
     "$schema": "https://unpkg.com/release-it/schema/release-it.json",
