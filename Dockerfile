@@ -1,9 +1,9 @@
-FROM node:25-slim
+FROM node:20-slim
 
 COPY . /app
 
 WORKDIR /app
 
-RUN npm install
+RUN npm install --ignore-dev
 
 CMD ["npm", "run", "start:backend"]

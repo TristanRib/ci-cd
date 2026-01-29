@@ -1,11 +1,11 @@
 import express from "express";
-import swaggerJsdoc from "swagger-jsdoc";
-import swaggerUi from "swagger-ui-express";
 import {GoogleGenAI} from "@google/genai";
 import cors from "cors";
 import dotenv from "dotenv";
 
 import auth from "./modules/authentication.js";
+import swaggerUi from "swagger-ui-express";
+import {swaggerSpec} from "../swagger.js";
 
 dotenv.config();
 
@@ -92,22 +92,6 @@ app.post("/generate", async (req, res) => {
             error instanceof Error ? error.message : "Erreur inconnue";
         res.status(500).json({error: message});
     }
-});
-
-/* Swagger */
-const swaggerSpec = swaggerJsdoc({
-    definition: {
-        openapi: "3.0.0",
-        info: {
-            title: "Gemini API",
-            version: "1.0.0",
-            description: "API permettant d'interroger Gemini via Google GenAI"
-        },
-        servers: [
-            {url: "http://localhost:3000"}
-        ]
-    },
-    apis: ["./src/**/*.js"]
 });
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
