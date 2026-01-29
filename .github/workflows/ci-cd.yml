@@ -56,7 +56,9 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Set Docker image tag
         run: |
-          IMAGE_TAG="ghcr.io/${GITHUB_REPOSITORY,,}:${GITHUB_REF_NAME,,}"
+          SAFE_REF_NAME="${GITHUB_REF_NAME,,}"
+          SAFE_REF_NAME="${SAFE_REF_NAME//\//-}"
+          IMAGE_TAG="ghcr.io/${GITHUB_REPOSITORY,,}:$SAFE_REF_NAME"
           IMAGE_LATEST="ghcr.io/${GITHUB_REPOSITORY,,}:latest"
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
           echo "IMAGE_LATEST=$IMAGE_LATEST" >> $GITHUB_ENV
