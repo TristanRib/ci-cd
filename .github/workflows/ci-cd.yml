@@ -85,6 +85,7 @@ jobs:
 
   release:
     if: >
+      github.event_name == 'workflow_dispatch' &&
       github.ref == 'refs/heads/main' &&
       github.ref_type != 'tag' &&
       !startsWith(github.event.head_commit.message, 'chore: release')
