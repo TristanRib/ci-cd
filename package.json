@@ -31,7 +31,8 @@
   "release-it": {
     "$schema": "https://unpkg.com/release-it/schema/release-it.json",
     "github": {
-      "release": true
+      "release": true,
+      "tokenRef": "GITHUB_TOKEN"
     },
     "git": {
       "commitMessage": "chore: release v${version}"
